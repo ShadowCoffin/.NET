@@ -1,0 +1,10 @@
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\bin\Debug\Practico1.exe.config
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\bin\Debug\Practico1.exe
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\bin\Debug\Practico1.pdb
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\bin\Debug\Shared.dll
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\bin\Debug\Shared.pdb
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\obj\Debug\Practico1.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\obj\Debug\Practico1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\obj\Debug\Practico1.csproj.CopyComplete
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\obj\Debug\Practico1.exe
+C:\Users\Admin\Documents\.NET\practico_01-master\Practico1\obj\Debug\Practico1.pdb

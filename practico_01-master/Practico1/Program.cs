@@ -14,26 +14,55 @@ namespace Practico1
         {
             Console.WriteLine("Mi Primera app C#");
 
-            string nombre = "";
-            string documento = "";
-            string fnacimiento = "";
-            string exit = "N";
+            string option = "";
             List<Persona> lista = new List<Persona>();
-
-            while (exit == "N")
+            do
             {
-                Console.WriteLine("Nombre:");
-                nombre = Console.ReadLine();
-                Console.WriteLine("Documento:");
-                documento = Console.ReadLine();
-                Console.WriteLine("Fecha Nacimiento (dd-mm-aaaa):");
-                fnacimiento = Console.ReadLine();
+                Menu();
+                option = Console.ReadLine();
+                switch (option)
+                {
+                    case "1":
+                        lista = lista.Concat<Persona>(AgregarPersonas()).ToList();
+                        break;
+                    case "2":
+                        ListarPersonas(lista, "", "");
+                        break;
+                    case "3":
+                        Console.WriteLine("Filtrar por:");
+                        Console.WriteLine("1- Nombre");
+                        Console.WriteLine("2- CI");
+                        string filtro = Console.ReadLine();
+                        if (filtro == "1")
+                        {
+                            Console.WriteLine("Ingrese nombre a filtrar");
+                            ListarPersonas(lista, Console.ReadLine(), "");
+                        }
+                        if (filtro == "2")
+                        {
+                            Console.WriteLine("Ingrese CI a filtrar");
+                            ListarPersonas(lista, "", Console.ReadLine());
+                        }
+                        break;
+                    case "4": break;
+                    case null: break;
 
-                DateTime nacimiento = DateTime.ParseExact(fnacimiento, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-                Persona p = new Persona(nombre, documento, nacimiento);
-                lista.Add(p);
-                Console.WriteLine("Exit (Y/N):");
-                exit = Console.ReadLine();
+                }
+                Console.Clear();
+
+            } while (option != "4");
+
+        }
+
+        private static void ListarPersonas(List<Persona>lista, string filtroNom, string filtroCI)
+        {
+            if (filtroNom != "")
+            {
+                lista = lista.Where(x => x.Nombre.StartsWith(filtroNom)).ToList();
+            }
+            if (filtroCI != "")
+            {
+                lista = lista.Where(x => x.Documento.StartsWith(filtroCI)).ToList();
             }
 
             // Ordenamos la lista.
@@ -49,16 +78,42 @@ namespace Practico1
             {
                 Console.WriteLine(x);
             });
-
-            // Prueba Where
-            lista = lista.Where(x => x.Nombre == "pepe" && x.GetEdad() > 50).ToList();
-            Console.WriteLine();
-            prueba.ForEach(x =>
-            {
-                Console.WriteLine(x);
-            });
-
             Console.ReadLine();
         }
+
+        private static List<Persona> AgregarPersonas()
+        {
+            string nombre = "";
+            string documento = "";
+            string fnacimiento = "";
+            string exit = "";
+            List<Persona> lista = new List<Persona>();
+            do
+            {
+                Console.WriteLine("Nombre:");
+                nombre = Console.ReadLine();
+                Console.WriteLine("Documento:");
+                documento = Console.ReadLine();
+                Console.WriteLine("Fecha Nacimiento (dd-mm-aaaa):");
+                fnacimiento = Console.ReadLine();
+                DateTime nacimiento = DateTime.ParseExact(fnacimiento, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                Persona p = new Persona(nombre, documento, nacimiento);
+                lista.Add(p);
+                Console.WriteLine("Exit (Y/N):");
+                exit = Console.ReadLine();
+            } while (exit != "y");
+            return lista;
+
+        }
+
+        private static void Menu()
+        {
+            Console.WriteLine("Bienvenido");
+            Console.WriteLine("1- Agregar Personas");
+            Console.WriteLine("2- Listar Personas");
+            Console.WriteLine("3- Filtrar Personas");
+            Console.WriteLine("4- Salir");
+        }
+            
     }
 }

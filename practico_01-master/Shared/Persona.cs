@@ -21,7 +21,10 @@ namespace Shared
 
         public int GetEdad()
         {
-            return (DateTime.Now - FechaNacimiento).Days / 365;
+            int edad = DateTime.Today.Year - FechaNacimiento.Year;
+            if (FechaNacimiento.AddYears(edad) > DateTime.Today)
+                edad--;
+            return edad;
         }
     }
 }
